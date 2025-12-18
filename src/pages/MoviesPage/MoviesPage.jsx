@@ -14,15 +14,38 @@ export default function MoviesPage() {
 
   useEffect(() => {
     const query = searchParams.get("query");
-    if (query) {
-      setIsLoading(true);
-      searchMovies(query)
-        .then((data) => setMovies(data.results))
-        .catch((e) => setError(e.message))
-        .finally(() => setIsLoading(false));
-    } else {
+
+    if (!query) {
       setMovies([]);
+      return;
     }
+
+    let isCancelled = false;
+
+    const fetchMovies = async () => {
+      try {
+        setIsLoading(true);
+
+        const data = await searchMovies(query);
+        if (!isCancelled) {
+          setMovies(data.results);
+        }
+      } catch (e) {
+        if (!isCancelled) {
+          setError(e.message);
+        }
+      } finally {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchMovies();
+
+    return () => {
+      isCancelled = true;
+    };
   }, [searchParams]);
 
   const onSubmit = async (e) => {
