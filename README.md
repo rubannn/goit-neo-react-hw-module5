@@ -1,5 +1,6 @@
 ```
 npm create vite@latest
+npm install axios clsx modern-normalize react-router-dom
 ```
 
 # React + Vite
