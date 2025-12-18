@@ -1,0 +1,25 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.link {
+    display: block;
+    padding: 16px 20px;
+    font-weight: 500;
+    color: var(--text);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* hover */
+.link:hover {
+    background-color: #f1f5f9;
+    color: var(--primary);
+}

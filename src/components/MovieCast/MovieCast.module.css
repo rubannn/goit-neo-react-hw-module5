@@ -1,0 +1,13 @@
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 24px;
+}
+
+.list li {
+    text-align: center;
+    background-color: var(--white);
+    padding: 12px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
